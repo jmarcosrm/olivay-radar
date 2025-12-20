@@ -70,7 +70,7 @@ const Header = () => {
           <Button variant="outline-olive" size="pill-sm" className="rounded-full">
             Faça seu orçamento
           </Button>
-          <Button variant="gold-soft" size="pill-sm" className="rounded-full">
+          <Button variant="outline-olive" size="pill-sm" className="rounded-full bg-olive-deep-1 text-text-on-dark border-olive-deep-1 hover:bg-olive-deep-2">
             Pedir demo
           </Button>
         </div>
@@ -111,7 +111,7 @@ const Header = () => {
               <Button variant="outline-olive" size="pill" className="rounded-full w-full">
                 Faça seu orçamento
               </Button>
-              <Button variant="gold-soft" size="pill" className="rounded-full w-full">
+              <Button variant="outline-olive" size="pill" className="rounded-full w-full bg-olive-deep-1 text-text-on-dark border-olive-deep-1 hover:bg-olive-deep-2">
                 Pedir demo
               </Button>
             </div>
