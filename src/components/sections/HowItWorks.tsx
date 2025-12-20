@@ -1,40 +1,69 @@
-import { useState } from "react";
-import GlassCard from "@/components/GlassCard";
-import RadarRings from "@/components/RadarRings";
+import { useState, useEffect, useCallback } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Radar, Users, CheckCircle, GitBranch } from "lucide-react";
+
+import howItWorks1 from "@/assets/how-it-works-1.jpeg";
+import howItWorks2 from "@/assets/how-it-works-2.jpeg";
+import howItWorks3 from "@/assets/how-it-works-3.jpeg";
+import howItWorks4 from "@/assets/how-it-works-4.jpeg";
 
 const HowItWorks = () => {
-  const [activeStep, setActiveStep] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
-  const steps = [
-    {
-      icon: Radar,
-      title: "Captura e sinais",
-      description: "A Olivay detecta publicações e movimentações relevantes para sua operação.",
-    },
-    {
-      icon: Users,
-      title: "Qualificação",
-      description: "O agente organiza e prioriza — você decide o que entra no foco.",
-    },
-    {
-      icon: CheckCircle,
-      title: "Matriz de conformidade",
-      description: "Checklist estruturado para reduzir erro e retrabalho.",
-    },
-    {
-      icon: GitBranch,
-      title: "Pipeline vivo",
-      description: "Tudo em um funil contínuo — não como evento isolado.",
-    },
+  const cards = [
+    { image: howItWorks1, step: "01", title: "Captura e sinais", description: "A Olivay detecta publicações e movimentações relevantes para sua operação." },
+    { image: howItWorks2, step: "02", title: "Qualificação", description: "O agente organiza e prioriza — você decide o que entra no foco." },
+    { image: howItWorks3, step: "03", title: "Matriz de conformidade", description: "Checklist estruturado para reduzir erro e retrabalho." },
+    { image: howItWorks4, step: "04", title: "Pipeline vivo", description: "Tudo em um funil contínuo — não como evento isolado." },
   ];
+
+  const nextCard = useCallback(() => {
+    setActiveIndex((prev) => (prev + 1) % cards.length);
+  }, [cards.length]);
+
+  const prevCard = useCallback(() => {
+    setActiveIndex((prev) => (prev - 1 + cards.length) % cards.length);
+  }, [cards.length]);
+
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+    const interval = setInterval(nextCard, 4000);
+    return () => clearInterval(interval);
+  }, [isAutoPlaying, nextCard]);
+
+  const getCardStyle = (index: number) => {
+    const diff = (index - activeIndex + cards.length) % cards.length;
+    
+    if (diff === 0) {
+      return {
+        transform: "translateX(0) scale(1)",
+        zIndex: 40,
+        opacity: 1,
+      };
+    } else if (diff === 1) {
+      return {
+        transform: "translateX(30px) scale(0.95)",
+        zIndex: 30,
+        opacity: 0.7,
+      };
+    } else if (diff === 2) {
+      return {
+        transform: "translateX(60px) scale(0.9)",
+        zIndex: 20,
+        opacity: 0.4,
+      };
+    } else {
+      return {
+        transform: "translateX(90px) scale(0.85)",
+        zIndex: 10,
+        opacity: 0.2,
+      };
+    }
+  };
 
   return (
     <section className="py-section-y-mobile md:py-section-y bg-bg-offwhite relative overflow-hidden">
-      {/* Subtle radar motif */}
-      <RadarRings variant="dark" ringCount={3} className="opacity-20" />
-      
       <div className="container relative z-10">
         <div className="text-center mb-12 md:mb-16">
           <span className="kicker mb-4 inline-block">COMO FUNCIONA</span>
@@ -43,94 +72,65 @@ const HowItWorks = () => {
           </h2>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Steps List */}
-          <div className="space-y-4">
-            {steps.map((step, index) => (
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16">
+          {/* Cards Stack */}
+          <div 
+            className="relative w-full max-w-[400px] h-[520px]"
+            onMouseEnter={() => setIsAutoPlaying(false)}
+            onMouseLeave={() => setIsAutoPlaying(true)}
+          >
+            {cards.map((card, index) => (
               <div
-                key={step.title}
-                onClick={() => setActiveStep(index)}
-                className={cn(
-                  "p-5 rounded-xl cursor-pointer transition-all duration-300",
-                  activeStep === index
-                    ? "bg-olive-deep-1 text-text-on-dark shadow-soft"
-                    : "bg-transparent hover:bg-olive-mid-1/10"
-                )}
+                key={card.step}
+                className="absolute inset-0 transition-all duration-500 ease-out cursor-pointer"
+                style={getCardStyle(index)}
+                onClick={() => setActiveIndex(index)}
               >
-                <div className="flex items-start gap-4">
-                  <div
-                    className={cn(
-                      "w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors",
-                      activeStep === index
-                        ? "bg-gold-soft-1/20"
-                        : "bg-olive-mid-1/10"
-                    )}
-                  >
-                    <step.icon
-                      className={cn(
-                        "w-5 h-5 transition-colors",
-                        activeStep === index ? "text-gold-soft-1" : "text-olive-mid-1"
-                      )}
-                    />
-                  </div>
-                  <div>
-                    <h4
-                      className={cn(
-                        "font-semibold mb-1 transition-colors",
-                        activeStep === index ? "text-text-on-dark" : "text-olive-deep-1"
-                      )}
-                    >
-                      {step.title}
-                    </h4>
-                    <p
-                      className={cn(
-                        "text-sm leading-relaxed transition-colors",
-                        activeStep === index
-                          ? "text-text-secondary-on-dark"
-                          : "text-olive-mid-3"
-                      )}
-                    >
-                      {step.description}
-                    </p>
-                  </div>
+                <div className="w-full h-full rounded-3xl overflow-hidden shadow-xl">
+                  <img
+                    src={card.image}
+                    alt={card.title}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
             ))}
           </div>
 
-          {/* Visual Display */}
-          <div className="relative h-[400px] hidden lg:flex items-center justify-center">
-            <GlassCard variant="light" className="w-full h-full p-8 relative overflow-hidden">
-              <RadarRings 
-                variant="dark" 
-                ringCount={4} 
-                className="opacity-30"
-              />
-              
-              <div className="relative z-10 h-full flex flex-col items-center justify-center text-center">
-                {steps.map((step, index) => (
-                  <div
-                    key={step.title}
-                    className={cn(
-                      "absolute inset-0 flex flex-col items-center justify-center transition-all duration-500",
-                      activeStep === index
-                        ? "opacity-100 scale-100"
-                        : "opacity-0 scale-95 pointer-events-none"
-                    )}
-                  >
-                    <div className="w-20 h-20 rounded-2xl bg-olive-mid-1/10 flex items-center justify-center mb-6">
-                      <step.icon className="w-10 h-10 text-olive-mid-1" />
-                    </div>
-                    <h3 className="text-2xl font-semibold text-olive-deep-1 mb-3">
-                      {step.title}
-                    </h3>
-                    <p className="text-olive-mid-3 max-w-sm">
-                      {step.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </GlassCard>
+          {/* Navigation */}
+          <div className="flex lg:flex-col items-center gap-6">
+            <button
+              onClick={prevCard}
+              className="w-12 h-12 rounded-full bg-olive-deep-1/10 hover:bg-olive-deep-1/20 flex items-center justify-center transition-colors group"
+              aria-label="Card anterior"
+            >
+              <ChevronLeft className="w-5 h-5 text-olive-deep-1 group-hover:text-olive-mid-1 transition-colors lg:rotate-90" />
+            </button>
+
+            {/* Dots indicator */}
+            <div className="flex lg:flex-col gap-2">
+              {cards.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveIndex(index)}
+                  className={cn(
+                    "w-2 h-2 rounded-full transition-all duration-300",
+                    activeIndex === index
+                      ? "bg-olive-deep-1 w-6 lg:w-2 lg:h-6"
+                      : "bg-olive-mid-1/30 hover:bg-olive-mid-1/50"
+                  )}
+                  aria-label={`Ir para card ${index + 1}`}
+                />
+              ))}
+            </div>
+
+            <button
+              onClick={nextCard}
+              className="w-12 h-12 rounded-full bg-olive-deep-1/10 hover:bg-olive-deep-1/20 flex items-center justify-center transition-colors group"
+              aria-label="Próximo card"
+            >
+              <ChevronRight className="w-5 h-5 text-olive-deep-1 group-hover:text-olive-mid-1 transition-colors lg:rotate-90" />
+            </button>
           </div>
         </div>
       </div>
