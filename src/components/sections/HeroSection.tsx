@@ -76,8 +76,7 @@ const HeroSection = () => {
             
             {/* Toast Notification */}
             <div 
-              className="toast-card absolute top-32 right-48 flex items-center gap-3 animate-float-delayed"
-              style={{ animationDelay: "1s" }}
+              className="toast-card absolute top-32 right-48 flex items-center gap-3 animate-float-alt"
             >
               <div className="w-8 h-8 rounded-lg bg-gold-soft-1/20 flex items-center justify-center">
                 <Bell className="w-4 h-4 text-gold-soft-1" />
@@ -91,8 +90,7 @@ const HeroSection = () => {
             {/* Pipeline Status */}
             <GlassCard 
               variant="dark" 
-              className="absolute bottom-24 right-4 p-5 animate-float"
-              style={{ animationDelay: "0.5s" }}
+              className="absolute bottom-24 right-4 p-5 animate-float-delayed"
             >
               <p className="text-micro text-text-secondary-on-dark mb-3">Pipeline Ativo</p>
               <div className="flex gap-2">
@@ -110,10 +108,11 @@ const HeroSection = () => {
             {/* Conformidade Badge */}
             <GlassCard 
               variant="dark" 
-              className="absolute bottom-8 left-8 p-4 animate-float-delayed"
+              className="absolute bottom-8 left-8 p-4 animate-float"
+              style={{ animationDelay: "2s" }}
             >
               <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-gold-soft-1" />
+                <div className="w-3 h-3 rounded-full bg-gold-soft-1 animate-glow-breathe" />
                 <p className="text-sm text-text-on-dark font-medium">Conformidade OK</p>
               </div>
             </GlassCard>
