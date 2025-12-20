@@ -2,17 +2,26 @@ import { Button } from "@/components/ui/button";
 import RadarRings from "@/components/RadarRings";
 import Kicker from "@/components/Kicker";
 import GlassCard from "@/components/GlassCard";
+import heroCampaignBg from "@/assets/hero-campaign-bg.jpeg";
 import { Bell, TrendingUp } from "lucide-react";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden pt-20" style={{ background: 'linear-gradient(180deg, hsl(64 53% 14%) 0%, hsl(60 22% 13%) 100%)' }}>
+    <section
+      className="relative min-h-screen flex items-center overflow-hidden pt-20 bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: `url(${heroCampaignBg})` }}
+    >
       {/* Radar Rings Background */}
       <RadarRings variant="light" ringCount={6} className="opacity-60" />
-      
+
       {/* Gradient Overlay */}
-      <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, hsl(64 53% 14% / 0.5) 0%, transparent 50%, hsl(60 22% 13% / 0.8) 100%)' }} />
-      
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(180deg, hsl(64 53% 14% / 0.70) 0%, hsl(64 53% 14% / 0.35) 42%, hsl(60 22% 13% / 0.88) 100%)",
+        }}
+      />
       <div className="container relative z-10 py-16 md:py-24">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Content */}
