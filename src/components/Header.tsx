@@ -65,13 +65,9 @@ const Header = () => {
           ))}
         </nav>
 
-        {/* Desktop CTAs */}
         <div className="hidden md:flex items-center gap-3">
           <Button variant="outline-olive" size="pill-sm" className="rounded-full">
             Faça seu orçamento
-          </Button>
-          <Button variant="outline-olive" size="pill-sm" className="rounded-full bg-olive-deep-1 text-text-on-dark border-olive-deep-1 hover:bg-olive-deep-2">
-            Pedir demo
           </Button>
         </div>
 
@@ -110,9 +106,6 @@ const Header = () => {
             <div className="flex flex-col gap-3 mt-4">
               <Button variant="outline-olive" size="pill" className="rounded-full w-full">
                 Faça seu orçamento
-              </Button>
-              <Button variant="outline-olive" size="pill" className="rounded-full w-full bg-olive-deep-1 text-text-on-dark border-olive-deep-1 hover:bg-olive-deep-2">
-                Pedir demo
               </Button>
             </div>
           </nav>

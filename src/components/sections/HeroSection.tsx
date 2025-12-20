@@ -56,9 +56,6 @@ const HeroSection = () => {
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
               style={{ animation: "fade-in-up 0.6s ease-out forwards", animationDelay: "0.5s", opacity: 0 }}
             >
-              <Button variant="glass-dark" size="pill" className="rounded-full">
-                Pedir demo
-              </Button>
               <Button variant="glass-outline" size="pill" className="rounded-full">
                 Ver soluções
               </Button>
