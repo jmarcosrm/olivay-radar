@@ -361,6 +361,64 @@
   }
 }
 
+@keyframes radar-sweep {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes radar-ring-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: var(--ring-opacity, 0.1);
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: calc(var(--ring-opacity, 0.1) * 1.5);
+  }
+}
+
+@keyframes radar-dot {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  20%, 80% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse-soft {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.1);
+  }
+}
+
+.animate-radar-sweep {
+  animation: radar-sweep 6s linear infinite;
+}
+
+.animate-radar-ring-pulse {
+  animation: radar-ring-pulse 3s ease-in-out infinite;
+}
+
+.animate-radar-dot {
+  animation: radar-dot 4s ease-in-out infinite;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 3s ease-in-out infinite;
+}
+
 /* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
   .animate-float,
