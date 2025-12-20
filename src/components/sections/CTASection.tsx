@@ -40,7 +40,7 @@ const CTASection = ({
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="gold-soft" size="pill" className="rounded-full">
+            <Button variant="glass-dark" size="pill" className="rounded-full">
               Faça seu orçamento
             </Button>
             <Button variant="glass-outline" size="pill" className="rounded-full">
