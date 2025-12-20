@@ -1,11 +1,21 @@
 import Kicker from "@/components/Kicker";
 import RadarRings from "@/components/RadarRings";
 
+import valueStatementBg from "@/assets/value-statement-bg.png";
+
 const ValueStatement = () => {
   const chips = ["Antecipação", "Previsibilidade", "Operação contínua"];
 
   return (
-    <section className="relative py-section-y-mobile md:py-section-y overflow-hidden" style={{ background: 'linear-gradient(180deg, hsl(64 53% 14%) 0%, hsl(60 22% 13%) 100%)' }}>
+    <section 
+      className="relative py-section-y-mobile md:py-section-y overflow-hidden bg-cover bg-center bg-no-repeat"
+      style={{ 
+        backgroundImage: `url(${valueStatementBg})`,
+      }}
+    >
+      {/* Dark overlay to ensure text readability */}
+      <div className="absolute inset-0 bg-olive-deep-1/60" />
+      
       <RadarRings variant="light" ringCount={4} className="opacity-40" />
       
       {/* Soft spotlight blobs */}
