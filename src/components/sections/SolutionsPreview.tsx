@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import GlassCard from "@/components/GlassCard";
 import { Button } from "@/components/ui/button";
 import { Radar, GitBranch, CheckSquare, ArrowRight } from "lucide-react";
+import solutionsBg from "@/assets/solutions-bg.jpeg";
 
 const SolutionsPreview = () => {
   const solutions = [
@@ -26,8 +27,13 @@ const SolutionsPreview = () => {
   ];
 
   return (
-    <section className="py-section-y-mobile md:py-section-y bg-bg-white">
-      <div className="container">
+    <section
+      className="py-section-y-mobile md:py-section-y relative bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: `url(${solutionsBg})` }}
+    >
+      {/* Overlay for text readability */}
+      <div className="absolute inset-0 bg-bg-white/85" />
+      <div className="container relative z-10">
         <div className="text-center mb-12 md:mb-16">
           <span className="kicker mb-4 inline-block">SOLUÇÕES</span>
           <h2 className="text-h2 font-semibold text-olive-deep-1 tracking-headlines">
