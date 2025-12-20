@@ -2,20 +2,20 @@ import { useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-import howItWorks1 from "@/assets/how-it-works-1.jpeg";
-import howItWorks2 from "@/assets/how-it-works-2.jpeg";
-import howItWorks3 from "@/assets/how-it-works-3.jpeg";
-import howItWorks4 from "@/assets/how-it-works-4.jpeg";
+import howItWorks1 from "@/assets/how-it-works-1.png";
+import howItWorks2 from "@/assets/how-it-works-2.png";
+import howItWorks3 from "@/assets/how-it-works-3.png";
+import howItWorks4 from "@/assets/how-it-works-4.png";
 
 const HowItWorks = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
   const cards = [
-    { image: howItWorks1, step: "01", title: "Captura e sinais", description: "A Olivay detecta publicações e movimentações relevantes para sua operação." },
-    { image: howItWorks2, step: "02", title: "Qualificação", description: "O agente organiza e prioriza — você decide o que entra no foco." },
-    { image: howItWorks3, step: "03", title: "Matriz de conformidade", description: "Checklist estruturado para reduzir erro e retrabalho." },
-    { image: howItWorks4, step: "04", title: "Pipeline vivo", description: "Tudo em um funil contínuo — não como evento isolado." },
+    { image: howItWorks1 },
+    { image: howItWorks2 },
+    { image: howItWorks3 },
+    { image: howItWorks4 },
   ];
 
   const nextCard = useCallback(() => {
@@ -43,19 +43,19 @@ const HowItWorks = () => {
       };
     } else if (diff === 1) {
       return {
-        transform: "translateX(30px) scale(0.95)",
+        transform: "translateX(25px) scale(0.96)",
         zIndex: 30,
         opacity: 0.7,
       };
     } else if (diff === 2) {
       return {
-        transform: "translateX(60px) scale(0.9)",
+        transform: "translateX(50px) scale(0.92)",
         zIndex: 20,
         opacity: 0.4,
       };
     } else {
       return {
-        transform: "translateX(90px) scale(0.85)",
+        transform: "translateX(75px) scale(0.88)",
         zIndex: 10,
         opacity: 0.2,
       };
@@ -72,27 +72,25 @@ const HowItWorks = () => {
           </h2>
         </div>
 
-        <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16">
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12">
           {/* Cards Stack */}
           <div 
-            className="relative w-full max-w-[400px] h-[520px]"
+            className="relative w-full max-w-[380px] aspect-[3/4]"
             onMouseEnter={() => setIsAutoPlaying(false)}
             onMouseLeave={() => setIsAutoPlaying(true)}
           >
             {cards.map((card, index) => (
               <div
-                key={card.step}
+                key={index}
                 className="absolute inset-0 transition-all duration-500 ease-out cursor-pointer"
                 style={getCardStyle(index)}
                 onClick={() => setActiveIndex(index)}
               >
-                <div className="w-full h-full rounded-3xl overflow-hidden shadow-xl">
-                  <img
-                    src={card.image}
-                    alt={card.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+                <img
+                  src={card.image}
+                  alt={`Passo ${index + 1}`}
+                  className="w-full h-full object-contain"
+                />
               </div>
             ))}
           </div>
@@ -101,10 +99,10 @@ const HowItWorks = () => {
           <div className="flex lg:flex-col items-center gap-6">
             <button
               onClick={prevCard}
-              className="w-12 h-12 rounded-full bg-olive-deep-1/10 hover:bg-olive-deep-1/20 flex items-center justify-center transition-colors group"
+              className="w-10 h-10 rounded-full bg-olive-deep-1/5 hover:bg-olive-deep-1/10 flex items-center justify-center transition-colors group"
               aria-label="Card anterior"
             >
-              <ChevronLeft className="w-5 h-5 text-olive-deep-1 group-hover:text-olive-mid-1 transition-colors lg:rotate-90" />
+              <ChevronLeft className="w-4 h-4 text-olive-mid-1 group-hover:text-olive-deep-1 transition-colors lg:rotate-90" />
             </button>
 
             {/* Dots indicator */}
@@ -116,8 +114,8 @@ const HowItWorks = () => {
                   className={cn(
                     "w-2 h-2 rounded-full transition-all duration-300",
                     activeIndex === index
-                      ? "bg-olive-deep-1 w-6 lg:w-2 lg:h-6"
-                      : "bg-olive-mid-1/30 hover:bg-olive-mid-1/50"
+                      ? "bg-olive-deep-1 w-5 lg:w-2 lg:h-5"
+                      : "bg-olive-mid-1/20 hover:bg-olive-mid-1/40"
                   )}
                   aria-label={`Ir para card ${index + 1}`}
                 />
@@ -126,10 +124,10 @@ const HowItWorks = () => {
 
             <button
               onClick={nextCard}
-              className="w-12 h-12 rounded-full bg-olive-deep-1/10 hover:bg-olive-deep-1/20 flex items-center justify-center transition-colors group"
+              className="w-10 h-10 rounded-full bg-olive-deep-1/5 hover:bg-olive-deep-1/10 flex items-center justify-center transition-colors group"
               aria-label="Próximo card"
             >
-              <ChevronRight className="w-5 h-5 text-olive-deep-1 group-hover:text-olive-mid-1 transition-colors lg:rotate-90" />
+              <ChevronRight className="w-4 h-4 text-olive-mid-1 group-hover:text-olive-deep-1 transition-colors lg:rotate-90" />
             </button>
           </div>
         </div>
