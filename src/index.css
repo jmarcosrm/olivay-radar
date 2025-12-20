@@ -208,20 +208,32 @@
   
   /* Animation Utilities */
   .animate-float {
-    animation: float 4.2s ease-in-out infinite;
+    animation: float 5s ease-in-out infinite;
   }
   
   .animate-float-delayed {
-    animation: float 4.2s ease-in-out infinite;
-    animation-delay: 1s;
+    animation: float 5s ease-in-out infinite;
+    animation-delay: 1.2s;
+  }
+  
+  .animate-float-alt {
+    animation: float-alt 6s ease-in-out infinite;
   }
   
   .animate-radar-pulse {
-    animation: radar-pulse 6s ease-in-out infinite;
+    animation: radar-pulse 4s ease-in-out infinite;
+  }
+  
+  .animate-radar-scan {
+    animation: radar-scan 20s linear infinite;
   }
   
   .animate-glow-breathe {
-    animation: glow-breathe 4s ease-in-out infinite;
+    animation: glow-breathe 3s ease-in-out infinite;
+  }
+  
+  .animate-sparkle {
+    animation: sparkle 2s ease-in-out infinite;
   }
   
   .animate-marquee {
@@ -242,21 +254,59 @@
 /* Keyframes */
 @keyframes float {
   0%, 100% {
-    transform: translateY(0px);
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-6px) rotate(0.5deg);
   }
   50% {
-    transform: translateY(-8px);
+    transform: translateY(-10px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-4px) rotate(-0.5deg);
+  }
+}
+
+@keyframes float-alt {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  33% {
+    transform: translateY(-8px) translateX(4px);
+  }
+  66% {
+    transform: translateY(-4px) translateX(-4px);
   }
 }
 
 @keyframes radar-pulse {
   0%, 100% {
-    opacity: 0.15;
+    opacity: 0.12;
     transform: scale(1);
   }
   50% {
-    opacity: 0.25;
-    transform: scale(1.02);
+    opacity: 0.28;
+    transform: scale(1.03);
+  }
+}
+
+@keyframes radar-scan {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.3);
   }
 }
 
