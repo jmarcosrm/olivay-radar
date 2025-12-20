@@ -32,8 +32,9 @@ const HowItWorks = () => {
     return () => clearInterval(interval);
   }, [isAutoPlaying, nextCard]);
 
-  const getCardStyle = (index: number) => {
+  const getCardStyle = (index: number, isDesktop: boolean) => {
     const diff = (index - activeIndex + cards.length) % cards.length;
+    const spacing = isDesktop ? 60 : 25;
     
     if (diff === 0) {
       return {
@@ -43,24 +44,33 @@ const HowItWorks = () => {
       };
     } else if (diff === 1) {
       return {
-        transform: "translateX(25px) scale(0.96)",
+        transform: `translateX(${spacing}px) scale(0.94)`,
         zIndex: 30,
         opacity: 0.7,
       };
     } else if (diff === 2) {
       return {
-        transform: "translateX(50px) scale(0.92)",
+        transform: `translateX(${spacing * 2}px) scale(0.88)`,
         zIndex: 20,
         opacity: 0.4,
       };
     } else {
       return {
-        transform: "translateX(75px) scale(0.88)",
+        transform: `translateX(${spacing * 3}px) scale(0.82)`,
         zIndex: 10,
         opacity: 0.2,
       };
     }
   };
+
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const checkDesktop = () => setIsDesktop(window.innerWidth >= 1024);
+    checkDesktop();
+    window.addEventListener('resize', checkDesktop);
+    return () => window.removeEventListener('resize', checkDesktop);
+  }, []);
 
   return (
     <section className="py-section-y-mobile md:py-section-y bg-bg-offwhite relative overflow-hidden">
@@ -83,7 +93,7 @@ const HowItWorks = () => {
               <div
                 key={index}
                 className="absolute inset-0 transition-all duration-500 ease-out cursor-pointer"
-                style={getCardStyle(index)}
+                style={getCardStyle(index, isDesktop)}
                 onClick={() => setActiveIndex(index)}
               >
                 <img
