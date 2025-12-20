@@ -32,7 +32,7 @@ const SolutionsPreview = () => {
       style={{ backgroundImage: `url(${solutionsBg})` }}
     >
       {/* Overlay for text readability */}
-      <div className="absolute inset-0 bg-bg-white/85" />
+      <div className="absolute inset-0 bg-bg-white/65" />
       <div className="container relative z-10">
         <div className="text-center mb-12 md:mb-16">
           <span className="kicker mb-4 inline-block">SOLUÇÕES</span>
