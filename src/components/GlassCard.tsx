@@ -21,7 +21,7 @@ const GlassCard = ({
       className={cn(
         "rounded-xl transition-all duration-300",
         variant === "dark" ? "glass-card-dark" : "glass-card-light",
-        hover && "hover:scale-[1.02] hover:shadow-glow-gold cursor-pointer",
+        hover && "hover:scale-[1.03] hover:shadow-glow-olive hover:-translate-y-1 hover:border-olive-deep-1/20 cursor-pointer",
         className
       )}
       style={style}

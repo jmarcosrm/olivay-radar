@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import logo from "@/assets/logo.png";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -29,44 +30,44 @@ const Header = () => {
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
-        isScrolled
-          ? "glass-card-light py-3"
-          : "bg-transparent py-5"
+        isScrolled ? "py-3" : "py-5"
       )}
     >
       <div className="container flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-olive-deep-1 flex items-center justify-center">
-            <span className="text-text-on-dark font-semibold text-sm">O</span>
-          </div>
-          <span className="text-xl font-semibold tracking-headlines text-olive-deep-2">
-            Olivay
-          </span>
+        <Link to="/" className="flex items-center gap-2 z-10">
+          <img src={logo} alt="Olivay Logo" className="h-12" />
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              to={link.href}
-              className={cn(
-                "text-sm font-medium transition-colors relative",
-                isActive(link.href)
-                  ? "text-olive-deep-1"
-                  : "text-olive-mid-3 hover:text-olive-deep-1",
-                "after:absolute after:bottom-[-4px] after:left-0 after:h-0.5 after:bg-gold-soft-1 after:transition-all after:duration-300",
-                isActive(link.href) ? "after:w-full" : "after:w-0 hover:after:w-full"
-              )}
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
+        <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+          <nav
+            className={cn(
+              "flex items-center gap-8 px-8 py-2 rounded-full transition-all duration-300",
+              isScrolled && "glass-card-dark"
+            )}
+          >
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                to={link.href}
+                className={cn(
+                  "text-sm font-medium transition-colors relative text-white",
+                  isActive(link.href)
+                    ? "text-white"
+                    : "text-white hover:text-white/80",
+                  "after:absolute after:bottom-[-4px] after:left-0 after:h-0.5 after:bg-white after:transition-all after:duration-300",
+                  isActive(link.href) ? "after:w-full" : "after:w-0 hover:after:w-full"
+                )}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+        </div>
 
-        <div className="hidden md:flex items-center gap-3">
-          <Button variant="outline-olive" size="pill-sm" className="rounded-full">
+        <div className="hidden md:flex items-center gap-3 z-10">
+          <Button variant="olive-solid" size="pill-sm" className="rounded-full">
             Faça seu orçamento
           </Button>
         </div>

@@ -15,6 +15,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
+        serif: ['Playfair Display', 'serif'],
       },
       fontSize: {
         'h1': 'clamp(40px, 4.6vw, 64px)',
@@ -61,13 +62,6 @@ export default {
         sand: {
           1: "hsl(var(--sand-1))",
           2: "hsl(var(--sand-2))",
-        },
-        
-        gold: {
-          soft: {
-            1: "hsl(var(--gold-soft-1))",
-            2: "hsl(var(--gold-soft-2))",
-          },
         },
         
         'text-primary': "hsl(var(--text-primary))",
@@ -122,7 +116,6 @@ export default {
       },
       boxShadow: {
         'soft': '0 8px 32px hsl(var(--shadow-soft))',
-        'glow-gold': '0 0 40px hsl(var(--glow-gold))',
         'glow-olive': '0 0 40px hsl(var(--glow-olive))',
       },
       backdropBlur: {
@@ -142,6 +135,14 @@ export default {
         "accordion-up": {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
+        },
+        "marquee": {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(calc(-100% - var(--gap)))" },
+        },
+        "marquee-vertical": {
+          from: { transform: "translateY(0)" },
+          to: { transform: "translateY(calc(-100% - var(--gap)))" },
         },
         "fade-in-up": {
           "0%": { opacity: "0", transform: "translateY(20px)" },
@@ -163,20 +164,17 @@ export default {
           "0%, 100%": { opacity: "0.3" },
           "50%": { opacity: "0.5" },
         },
-        "marquee": {
-          "0%": { transform: "translateX(0%)" },
-          "100%": { transform: "translateX(-50%)" },
-        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "marquee": "marquee var(--duration) linear infinite",
+        "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
         "fade-in-up": "fade-in-up 0.6s ease-out forwards",
         "slide-in-right": "slide-in-right 0.5s ease-out forwards",
         "float": "float 4.2s ease-in-out infinite",
         "radar-pulse": "radar-pulse 6s ease-in-out infinite",
         "glow-breathe": "glow-breathe 4s ease-in-out infinite",
-        "marquee": "marquee 40s linear infinite",
       },
     },
   },

@@ -5,7 +5,7 @@ const ValueStatement = () => {
   const chips = ["Antecipação", "Previsibilidade", "Operação contínua"];
 
   return (
-    <section className="relative py-section-y-mobile md:py-section-y overflow-hidden bg-offwhite-1">
+    <section className="relative py-section-y-mobile md:py-section-y overflow-hidden">
       {/* Animated SVG Radar Background */}
       <div className="absolute inset-0 flex items-center justify-center opacity-80">
         <div className="w-full h-full max-w-4xl max-h-4xl">
@@ -14,7 +14,7 @@ const ValueStatement = () => {
       </div>
       
       {/* Subtle overlay for text readability */}
-      <div className="absolute inset-0 bg-gradient-radial from-transparent via-offwhite-1/40 to-offwhite-1/80" />
+      <div className="absolute inset-0 bg-gradient-radial from-transparent via-white/40 to-white/80" />
       
       <div className="container relative z-10">
         <div className="max-w-3xl mx-auto text-center">
@@ -24,7 +24,7 @@ const ValueStatement = () => {
           
           <h2 className="text-h2 font-semibold text-olive-deep-1 leading-tight tracking-headlines mb-6">
             O mercado reage.<br />
-            A Olivay antecipa.
+            <span className="font-serif font-light">A Olivay antecipa.</span>
           </h2>
           
           <p className="text-lg text-olive-mid-3 leading-relaxed mb-10 max-w-2xl mx-auto">

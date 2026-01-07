@@ -6,11 +6,68 @@
 
 @layer base {
   :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+
+@layer base {
+  :root {
     /* Olivay Brand Colors */
-    --background: 40 20% 95%;
+    --background: 0 0% 99.6%;
     --bg-white: 0 0% 99.6%;
-    --bg-offwhite: 35 20% 88%;
-    --bg-mist: 100 3% 87%;
+    --bg-offwhite: 0 0% 99.6%;
+    --bg-mist: 0 0% 99.6%;
     
     --olive-deep-1: 64 53% 14%;
     --olive-deep-2: 60 22% 13%;
@@ -21,8 +78,6 @@
     --sand-1: 33 27% 77%;
     --sand-2: 25 35% 71%;
     
-    --gold-soft-1: 43 61% 60%;
-    --gold-soft-2: 44 64% 65%;
     
     --foreground: 60 22% 13%;
     --text-primary: 60 22% 13%;
@@ -42,11 +97,11 @@
     --secondary: 35 20% 88%;
     --secondary-foreground: 60 22% 13%;
     
-    --muted: 35 20% 88%;
+    --muted: 0 0% 99.6%;
     --muted-foreground: 65 13% 37%;
     
-    --accent: 43 61% 60%;
-    --accent-foreground: 60 22% 13%;
+    --accent: var(--olive-deep-1);
+    --accent-foreground: var(--text-on-dark);
     
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 99.6%;
@@ -56,7 +111,7 @@
     --border-dark: 60 22% 13% / 0.18;
     
     --input: 35 20% 88%;
-    --ring: 43 61% 60%;
+    --ring: var(--olive-deep-1);
     
     --radius: 0.75rem;
     --radius-sm: 0.75rem;
@@ -68,18 +123,17 @@
     --glass-fill-dark: 60 22% 13% / 0.52;
     --glass-fill-light: 0 0% 100% / 0.55;
     --glow-olive: 64 26% 26% / 0.45;
-    --glow-gold: 44 64% 65% / 0.30;
     --shadow-soft: 60 22% 13% / 0.14;
     
     /* Sidebar */
-    --sidebar-background: 35 20% 88%;
+    --sidebar-background: 0 0% 99.6%;
     --sidebar-foreground: 60 22% 13%;
     --sidebar-primary: 64 53% 14%;
     --sidebar-primary-foreground: 0 0% 99.6%;
-    --sidebar-accent: 43 61% 60%;
-    --sidebar-accent-foreground: 60 22% 13%;
+    --sidebar-accent: var(--olive-deep-1);
+    --sidebar-accent-foreground: var(--text-on-dark);
     --sidebar-border: 60 22% 13% / 0.12;
-    --sidebar-ring: 43 61% 60%;
+    --sidebar-ring: var(--olive-deep-1);
   }
 
   .dark {
@@ -92,8 +146,8 @@
     --popover: 64 53% 14%;
     --popover-foreground: 0 0% 99.6%;
     
-    --primary: 43 61% 60%;
-    --primary-foreground: 60 22% 13%;
+    --primary: var(--olive-deep-1);
+    --primary-foreground: var(--text-on-dark);
     
     --secondary: 64 26% 26%;
     --secondary-foreground: 0 0% 99.6%;
@@ -101,12 +155,12 @@
     --muted: 64 26% 26%;
     --muted-foreground: 33 27% 77%;
     
-    --accent: 43 61% 60%;
-    --accent-foreground: 60 22% 13%;
+    --accent: var(--olive-deep-1);
+    --accent-foreground: var(--text-on-dark);
     
     --border: 0 0% 100% / 0.12;
     --input: 64 26% 26%;
-    --ring: 43 61% 60%;
+    --ring: var(--olive-deep-1);
   }
 }
 
@@ -177,11 +231,11 @@
   }
   
   .bg-offwhite-gradient {
-    background: linear-gradient(180deg, hsl(var(--bg-offwhite)) 0%, hsl(var(--bg-white)) 100%);
+    background: linear-gradient(180deg, hsl(var(--bg-white)) 0%, hsl(var(--bg-white)) 100%);
   }
   
   .bg-olive-to-offwhite {
-    background: linear-gradient(180deg, hsl(var(--olive-deep-2)) 0%, hsl(var(--bg-offwhite)) 100%);
+    background: linear-gradient(180deg, hsl(var(--olive-deep-2)) 0%, hsl(var(--bg-white)) 100%);
   }
 }
 
@@ -192,16 +246,9 @@
     background-image: linear-gradient(135deg, hsl(var(--olive-mid-1)) 0%, hsl(var(--olive-deep-1)) 100%);
   }
   
-  .text-gradient-gold {
-    @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(var(--gold-soft-1)) 0%, hsl(var(--gold-soft-2)) 100%);
-  }
-  
+    
   /* Glow Effects */
-  .glow-gold {
-    box-shadow: 0 0 40px hsl(var(--glow-gold));
-  }
-  
+    
   .glow-olive {
     box-shadow: 0 0 40px hsl(var(--glow-olive));
   }
@@ -249,6 +296,7 @@
   .hover-pause:hover .animate-marquee-reverse {
     animation-play-state: paused;
   }
+
 }
 
 /* Keyframes */

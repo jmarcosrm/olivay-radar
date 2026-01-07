@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import GlassCard from "@/components/GlassCard";
 import { Button } from "@/components/ui/button";
 import { Radar, GitBranch, CheckSquare, ArrowRight } from "lucide-react";
-import solutionsBg from "@/assets/solutions-bg.jpeg";
+import bgImage from "@/assets/Adicionar_animao_sutil_202512231409.gif";
 
 const SolutionsPreview = () => {
   const solutions = [
@@ -29,15 +29,14 @@ const SolutionsPreview = () => {
   return (
     <section
       className="py-section-y-mobile md:py-section-y relative bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: `url(${solutionsBg})` }}
+      style={{ backgroundImage: `url(${bgImage})` }}
     >
       {/* Overlay for text readability */}
-      <div className="absolute inset-0 bg-bg-white/65" />
+      <div className="absolute inset-0 bg-white/80" />
       <div className="container relative z-10">
         <div className="text-center mb-12 md:mb-16">
-          <span className="kicker mb-4 inline-block">SOLUÇÕES</span>
-          <h2 className="text-h2 font-semibold text-olive-deep-1 tracking-headlines">
-            Um sistema de agentes<br />para decisões críticas.
+                    <h2 className="text-h2 font-semibold text-olive-deep-1 tracking-headlines">
+            Um sistema de agentes<br /><span className="font-serif font-light">para decisões críticas.</span>
           </h2>
         </div>
 
@@ -50,9 +49,9 @@ const SolutionsPreview = () => {
                 className="p-6 md:p-8 h-full group"
               >
                 <div 
-                  className="w-14 h-14 rounded-2xl bg-olive-mid-1/10 flex items-center justify-center mb-6 transition-all duration-300 group-hover:bg-gold-soft-1/20"
+                  className="w-14 h-14 rounded-2xl bg-olive-mid-1/10 flex items-center justify-center mb-6 transition-all duration-300 group-hover:bg-olive-mid-1/20"
                 >
-                  <solution.icon className="w-7 h-7 text-olive-mid-1 transition-colors group-hover:text-gold-soft-1" />
+                  <solution.icon className="w-7 h-7 text-olive-mid-1 transition-colors group-hover:text-olive-deep-1" />
                 </div>
                 
                 <h3 className="text-h3 font-semibold text-olive-deep-1 mb-3">
@@ -63,7 +62,7 @@ const SolutionsPreview = () => {
                   {solution.description}
                 </p>
                 
-                <div className="flex items-center gap-2 text-sm font-medium text-olive-mid-1 group-hover:text-gold-soft-1 transition-colors">
+                <div className="flex items-center gap-2 text-sm font-medium text-olive-mid-1 group-hover:text-olive-deep-1 transition-colors">
                   Ver detalhes
                   <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                 </div>

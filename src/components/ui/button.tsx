@@ -16,14 +16,14 @@ const buttonVariants = cva(
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         // Olivay Brand Variants
-        "gold-soft": 
-          "bg-gold-soft-1 text-olive-deep-2 shadow-soft hover:bg-gold-soft-2 hover:shadow-glow-gold",
         "outline-olive":
           "bg-transparent border-2 border-olive-mid-1 text-olive-mid-1 hover:bg-olive-mid-1/10",
         "glass-outline":
           "bg-bg-white/10 border border-bg-white/35 text-text-on-dark hover:bg-bg-white/20 backdrop-blur-[16px]",
         "glass-dark":
           "bg-olive-deep-2/60 border border-bg-white/20 text-text-on-dark hover:bg-olive-deep-2/80 backdrop-blur-[16px]",
+        "olive-solid":
+          "bg-olive-deep-1 text-text-on-dark hover:bg-olive-deep-1/90",
       },
       size: {
         default: "h-10 px-4 py-2",

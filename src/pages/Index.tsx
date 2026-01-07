@@ -1,11 +1,12 @@
 import { Helmet } from "react-helmet-async";
 import Layout from "@/components/Layout";
 import HeroSection from "@/components/sections/HeroSection";
-import ValueStatement from "@/components/sections/ValueStatement";
-import BenefitsMarquee from "@/components/sections/BenefitsMarquee";
+import { ScrollablePreviewSection } from "@/components/sections/ScrollablePreviewSection";
+import Section from "@/components/Section";
 import HowItWorks from "@/components/sections/HowItWorks";
 import SolutionsPreview from "@/components/sections/SolutionsPreview";
 import CTASection from "@/components/sections/CTASection";
+import TestimonialsSection from "@/components/sections/TestimonialsSection";
 
 const Index = () => {
   return (
@@ -19,12 +20,22 @@ const Index = () => {
       </Helmet>
       
       <Layout>
-        <HeroSection />
-        <BenefitsMarquee />
-        <ValueStatement />
-        <HowItWorks />
-        <SolutionsPreview />
-        <CTASection />
+        <div className="space-y-8 pb-8">
+          <HeroSection />
+          <ScrollablePreviewSection />
+                    <Section>
+            <HowItWorks />
+          </Section>
+          <Section>
+            <SolutionsPreview />
+          </Section>
+          <Section>
+            <TestimonialsSection />
+          </Section>
+          <Section>
+            <CTASection />
+          </Section>
+        </div>
       </Layout>
     </>
   );
